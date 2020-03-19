@@ -9,6 +9,29 @@ var config = {
     byline: '',
     footer: 'Data from the Department of Education and Buruea of Labor Statistics',
     chapters: [
+      {
+          id: 'overview',
+          title: 'The Red State Revolt',
+          description: '',
+          location: {
+              center: [-96.92126, 36.79253],
+              zoom: 4.97,
+              pitch: 60.00,
+              bearing: 0.88
+          },
+          onChapterEnter: [
+              {
+                  layer: 'red-states',
+                  opacity: .75
+              },
+          ],
+          onChapterExit: [
+            {
+                  layer: 'red-states',
+                  opacity: 0
+            }
+          ]
+      },
         {
             id: 'glacier-np',
             title: 'West Viginia',
@@ -22,16 +45,14 @@ var config = {
             },
             onChapterEnter: [
                 {
-                    layer: 'westvirginia',
+                    layer: 'west-virginia',
                     opacity: 1
-//                    height: 0
                 },
             ],
             onChapterExit: [
               {
-                    layer: 'westvirginia',
-                    opacity: 0
-    //              height: 30000
+                    layer: 'west-virginia',
+                    opacity: 1
               }
             ]
         },
@@ -41,10 +62,10 @@ var config = {
             image: '',
             description: 'This map visualies the number of students in each of the 55 school districts in West Virginia. While not a measument of the number of teachers, it helps approximate the districts where the strike was most impactful',
             location: {
-                center: [-80.80653, 38.65278],
+                center: [-80.58153, 39.09037],
                 zoom: 7,
-                pitch: 45.00,
-                bearing: 0.00
+                pitch: 60.00,
+                bearing: -117.24
             },
             onChapterEnter: [],
             onChapterExit: []
