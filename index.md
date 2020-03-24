@@ -10,15 +10,15 @@
     <script src="https://unpkg.com/scrollama"></script>
     <style>
         body {
-            margin:0; 
-            padding:0; 
+            margin:0;
+            padding:0;
             font-family: sans-serif;
         }
         a, a:hover, a:visited {
             color: #0071bc;
         }
         #map {
-            top:0; 
+            top:0;
             height: 100vh;
             width:100vw;
             position: fixed;
@@ -92,7 +92,7 @@
         </style>
 </head>
 <body>
-
+Hello World!
 <div id="map"></div>
 <div id="story"></div>
 <script src="./config.js"></script>
@@ -158,19 +158,19 @@ if (header.innerText.length > 0) {
 config.chapters.forEach((record, idx) => {
     var container = document.createElement('div');
     var chapter = document.createElement('div');
-    
+
     if (record.title) {
         var title = document.createElement('h3');
         title.innerText = record.title;
         chapter.appendChild(title);
     }
-    
+
     if (record.image) {
-        var image = new Image();  
-        image.src = record.image;  
+        var image = new Image();
+        image.src = record.image;
         chapter.appendChild(image);
     }
-    
+
     if (record.description) {
         var story = document.createElement('p');
         story.innerHTML = record.description;
@@ -207,11 +207,11 @@ if (footer.innerText.length > 0) {
 mapboxgl.accessToken = config.accessToken;
 
 const transformRequest = (url) => {
-    const hasQuery = url.indexOf("?") !== -1;	  
-    const suffix = hasQuery ? "&pluginName=journalismScrollytelling" : "?pluginName=journalismScrollytelling";	  
+    const hasQuery = url.indexOf("?") !== -1;
+    const suffix = hasQuery ? "&pluginName=journalismScrollytelling" : "?pluginName=journalismScrollytelling";
     return {
       url: url + suffix
-    }	  
+    }
 }
 
 var map = new mapboxgl.Map({
