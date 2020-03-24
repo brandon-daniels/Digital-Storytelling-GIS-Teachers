@@ -92,7 +92,6 @@
         </style>
 </head>
 <body>
-Hello World!
 <div id="map"></div>
 <div id="story"></div>
 <script src="./config.js"></script>
