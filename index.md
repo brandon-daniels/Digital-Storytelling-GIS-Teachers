@@ -1,269 +1,243 @@
+
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset='utf-8' />
-    <title>Scrollytelling Template</title>
-    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.css' rel='stylesheet' />
-    <script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
-    <script src="https://unpkg.com/scrollama"></script>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Scrollama: Basic Example</title>
+    <meta name="description" content="Scrollama: Basic Example" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../style.css" />
     <style>
-        body {
-            margin:0;
-            padding:0;
-            font-family: sans-serif;
-        }
-        a, a:hover, a:visited {
-            color: #0071bc;
-        }
-        #map {
-            top:0;
-            height: 100vh;
-            width:100vw;
-            position: fixed;
-            z-index: -5;
-        }
-        #header {
-            margin: 3vh auto;
-            width: 90vw;
-            padding: 2vh;
-            text-align: center;
-        }
-        #footer {
-            width: 100%;
-            min-height: 5vh;
-            padding-top: 2vh;
-            padding-bottom: 2vh;
-            text-align: center;
-            line-height: 25px;
-            font-size: 13px;
-        }
-        #features {
-            padding-top: 10vh;
-            padding-bottom: 10vh;
-            z-index: 100;
-        }
-        .centered {
-            width: 50vw;
-            margin: 0 auto;
-        }
-        .lefty {
-            width: 33vw;
-            margin-left: 5vw;
-        }
-        .righty {
-            width: 33vw;
-            margin-left: 62vw;
-        }
-        .light {
-            color: #444;
-            background-color: #fafafa;
-        }
-        .dark {
-            color: #fafafa;
-            background-color: #444;
-        }
-        .step {
-            padding-bottom: 50vh;
-            /* margin-bottom: 10vh; */
-            opacity: 0.25;
-        }
-        .step.active {
-            opacity: 0.9;
-        }
-
-        .step div {
-            padding:  25px 50px;
-            line-height: 25px;
-            font-size: 13px;
-        }
-
-        .step img {
-            width: 100%;
-        }
-
-        @media (max-width: 750px) {
-            #features {
-                width: 90vw;
-                margin: 0 auto;
-            }
-        }
-        </style>
-</head>
-<body>
-<div id="map"></div>
-<div id="story"></div>
-<script src="./config.js"></script>
-<script>
-var layerTypes = {
-    'fill': ['fill-opacity'],
-    'line': ['line-opacity'],
-    'circle': ['circle-opacity', 'circle-stroke-opacity'],
-    'symbol': ['icon-opacity', 'text-opacity'],
-    'raster': ['raster-opacity'],
-    'fill-extrusion': ['fill-extrusion-opacity']
+        * {
+  box-sizing: border-box;
 }
 
-var alignments = {
-    'left': 'lefty',
-    'center': 'centered',
-    'right': 'righty'
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
-function getLayerPaintType(layer) {
-    var layerType = map.getLayer(layer).type;
-    return layerTypes[layerType];
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  min-height: 1280px;
+  color: #3b3b3b;
+  font-size: 24px;
 }
 
-function setLayerOpacity(layer) {
-    var paintProps = getLayerPaintType(layer.layer);
-    paintProps.forEach(function(prop) {
-        map.setPaintProperty(layer.layer, prop, layer.opacity);
-    });
+p,
+h1,
+h2,
+h3,
+h4,
+a {
+  margin: 0;
+  font-weight: 400;
 }
 
-var story = document.getElementById('story');
-var features = document.createElement('div');
-features.classList.add(alignments[config.alignment]);
-features.setAttribute('id', 'features');
-
-var header = document.createElement('div');
-
-if (config.title) {
-    var titleText = document.createElement('h1');
-    titleText.innerText = config.title;
-    header.appendChild(titleText);
+a,
+a:visited,
+a:hover {
+  color: teal;
+  text-decoration: none;
+  border-bottom: 2px solid currentColor;
 }
 
-if (config.subtitle) {
-    var subtitleText = document.createElement('h2');
-    subtitleText.innerText = config.subtitle;
-    header.appendChild(subtitleText);
+nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  background: #f3f3f3;
+  padding: 1rem;
+  padding-right: 5rem;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
-if (config.byline) {
-    var bylineText = document.createElement('p');
-    bylineText.innerText = config.byline;
-    header.appendChild(bylineText);
+.nav__examples {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-top: 1rem;
 }
 
-if (header.innerText.length > 0) {
-    header.classList.add(config.theme);
-    header.setAttribute('id', 'header');
-    story.appendChild(header);
+.nav__examples > * {
+  margin-right: 0.5rem;
 }
 
-config.chapters.forEach((record, idx) => {
-    var container = document.createElement('div');
-    var chapter = document.createElement('div');
-
-    if (record.title) {
-        var title = document.createElement('h3');
-        title.innerText = record.title;
-        chapter.appendChild(title);
-    }
-
-    if (record.image) {
-        var image = new Image();
-        image.src = record.image;
-        chapter.appendChild(image);
-    }
-
-    if (record.description) {
-        var story = document.createElement('p');
-        story.innerHTML = record.description;
-        chapter.appendChild(story);
-    }
-
-    container.setAttribute('id', record.id);
-    container.classList.add('step');
-    if (idx === 0) {
-        container.classList.add('active');
-    }
-
-    chapter.classList.add(config.theme);
-    container.appendChild(chapter);
-    features.appendChild(container);
-});
-
-story.appendChild(features);
-
-var footer = document.createElement('div');
-
-if (config.footer) {
-    var footerText = document.createElement('p');
-    footerText.innerHTML = config.footer;
-    footer.appendChild(footerText);
+#intro {
+  max-width: 40rem;
+  margin: 1rem auto;
+  text-align: center;
 }
 
-if (footer.innerText.length > 0) {
-    footer.classList.add(config.theme);
-    footer.setAttribute('id', 'footer');
-    story.appendChild(footer);
+.intro__hed {
+  font-size: 2em;
+  margin: 2rem auto 0.5rem auto;
 }
 
-mapboxgl.accessToken = config.accessToken;
-
-const transformRequest = (url) => {
-    const hasQuery = url.indexOf("?") !== -1;
-    const suffix = hasQuery ? "&pluginName=journalismScrollytelling" : "?pluginName=journalismScrollytelling";
-    return {
-      url: url + suffix
-    }
+.intro__dek {
+  color: #8a8a8a;
 }
 
-var map = new mapboxgl.Map({
-    container: 'map',
-    style: config.style,
-    center: config.chapters[0].location.center,
-    zoom: config.chapters[0].location.zoom,
-    bearing: config.chapters[0].location.bearing,
-    pitch: config.chapters[0].location.pitch,
-    scrollZoom: false,
-    transformRequest: transformRequest
-});
-
-var marker = new mapboxgl.Marker();
-if (config.showMarkers) {
-    marker.setLngLat(config.chapters[0].location.center).addTo(map);
+#intro {
+  margin-bottom: 320px;
 }
 
-// instantiate the scrollama
-var scroller = scrollama();
+#outro {
+  height: 640px;
+}
 
-map.on("load", function() {
-    // setup the instance, pass callback functions
-    scroller
-    .setup({
-        step: '.step',
-        offset: 0.5,
-        progress: true
-    })
-    .onStepEnter(response => {
-        var chapter = config.chapters.find(chap => chap.id === response.element.id);
-        response.element.classList.add('active');
-        map.flyTo(chapter.location);
-        if (config.showMarkers) {
-            marker.setLngLat(chapter.location.center);
-        }
-        if (chapter.onChapterEnter.length > 0) {
-            chapter.onChapterEnter.forEach(setLayerOpacity);
-        }
-    })
-    .onStepExit(response => {
-        var chapter = config.chapters.find(chap => chap.id === response.element.id);
-        response.element.classList.remove('active');
-        if (chapter.onChapterExit.length > 0) {
-            chapter.onChapterExit.forEach(setLayerOpacity);
-        }
-    });
-});
+@media (min-width: 840px) {
+  .nav__examples {
+    margin-top: 0;
+    margin-left: 2rem;
+  }
+}
+      #scrolly {
+        position: relative;
+      }
 
-// setup resize event
-window.addEventListener('resize', scroller.resize);
+      article {
+        position: relative;
+        padding: 0 1rem;
+        margin: 0 auto;
+        width: 33%;
+      }
 
-</script>
+      .step {
+        margin: 2rem auto 4rem auto;
+        background-color: #3b3b3b;
+        color: #fff;
+      }
 
-</body>
+      .step.is-active {
+        background-color: goldenrod;
+        color: #3b3b3b;
+      }
+
+      .step p {
+        text-align: center;
+        padding: 1rem;
+        font-size: 1.5rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <nav>
+        <a href="https://github.com/russellgoldenberg/scrollama"
+          >scrollama.js</a
+        >
+        <div class="nav__examples">
+          <p>Examples:</p>
+          <a href="https://russellgoldenberg.github.io/scrollama/basic"
+            >Basic</a
+          >
+          <a href="https://russellgoldenberg.github.io/scrollama/progress"
+            >Progress</a
+          >
+          <a href="https://russellgoldenberg.github.io/scrollama/sticky-side"
+            >Sticky Side</a
+          >
+          <a href="https://russellgoldenberg.github.io/scrollama/sticky-overlay"
+            >Sticky Overlay</a
+          >
+          <a href="https://russellgoldenberg.github.io/scrollama/mobile-pattern"
+            >Mobile Pattern</a
+          >
+        </div>
+      </nav>
+      <section id="intro">
+        <h1 class="intro__hed">Basic Example</h1>
+        <p class="intro__dek">
+          Start scrolling to see how it works.
+        </p>
+      </section>
+      <section id="scrolly">
+        <article>
+          <div class="step" data-step="1">
+            <p>STEP 1</p>
+          </div>
+          <div class="step" data-step="2">
+            <p>STEP 2</p>
+          </div>
+          <div class="step" data-step="3">
+            <p>STEP 3</p>
+          </div>
+          <div class="step" data-step="4">
+            <p>STEP 4</p>
+          </div>
+        </article>
+      </section>
+      <section id="outro"></section>
+    </main>
+
+    <script src="https://unpkg.com/intersection-observer"></script>
+    <script src="../scrollama.min.js"></script>
+    <script>
+      var scrolly = document.querySelector("#scrolly");
+      var article = scrolly.querySelector("article");
+      var step = article.querySelectorAll(".step");
+
+      // initialize the scrollama
+      var scroller = scrollama();
+
+      // scrollama event handlers
+      function handleStepEnter(response) {
+        // response = { element, direction, index }
+        console.log(response);
+        // add to color to current step
+        response.element.classList.add("is-active");
+      }
+
+      function handleStepExit(response) {
+        // response = { element, direction, index }
+        console.log(response);
+        // remove color from current step
+        response.element.classList.remove("is-active");
+      }
+
+      function init() {
+        // set random padding for different step heights (not required)
+        step.forEach(function(step) {
+          var v = 100 + Math.floor((Math.random() * window.innerHeight) / 4);
+          step.style.padding = v + "px 0px";
+        });
+
+        // 1. setup the scroller with the bare-bones options
+        //      this will also initialize trigger observations
+        // 2. bind scrollama event handlers (this can be chained like below)
+        scroller
+          .setup({
+            step: "#scrolly article .step",
+            debug: true,
+            offset: 0.5
+          })
+          .onStepEnter(handleStepEnter)
+          .onStepExit(handleStepExit);
+
+        // 3. setup resize event
+        window.addEventListener("resize", scroller.resize);
+      }
+
+      // kick things off
+      init();
+    </script>
+    <div id="scrollama__debug-offset--avp1587499052758" class="scrollama__debug-offset" style="position: fixed; left: 0px; width: 100%; height: 0px; border-top: 2px dashed black; z-index: 9999; top: 454px;"><p style="font-size: 12px; font-family: monospace; color: black; margin: 0px; padding: 6px;">".step" trigger: <span>0.5</span></p></div>
+  </body>
 </html>
