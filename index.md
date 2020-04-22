@@ -7,7 +7,7 @@
     <title>Strike Project</title>
     <meta name="description" content="Scrollama: Basic Example" />
 	<meta name="viewport" content="width=500" />
-	    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js'></script>
+	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="styles.css" type="text/css">
 
@@ -24,6 +24,7 @@ body {
   padding: 0;
   height: 100%;
 }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
 
 h1{
   font-weight: 900;
@@ -146,13 +147,13 @@ h2{
 									width: 100%;
 								}
 							</style>
-				        	<section class="panel red">
+				        	<section class="panel white">
 				          		<h1>1</h1>
 				      		</section>
 				        	<div class="spacer s2"></div>
 				        	<div id="endtitle" class="spacer s1"></div>
 				        	<div id="pin1" class="spacer s10">
-				          		<!--<div id="map"></div>--><h1>poop</h1>
+				          		<div id="map"></div>
 				        	</div>
 				        	<div class="spacer s2"></div>
 
@@ -163,16 +164,17 @@ h2{
 				          		<h1>3</h2>
 				        	</section>
 <script>
-/*			        var map = new mapboxgl.Map({
+			        var map = new mapboxgl.Map({
 			          container: 'map', // container id
 			          style: 'mapbox://styles/brandondaniels1917/ck7p8e3x103m81iqhe4xbeosm', // stylesheet location
+   					  accessToken: 'pk.eyJ1IjoiYnJhbmRvbmRhbmllbHMxOTE3IiwiYSI6ImNrMm1tYjgwYTBqbDIzZHQ1dmdyNWZxeWcifQ.fdROqOxFdqnMmA6G_f_hgw',
 			          center: [-96.92126, 36.79253],
 			          zoom: 4, // starting zoom
 			          pitch: 60.00,
 			          bearing: 0.88
 			        });
 			        map.scrollZoom.disable();
-*/
+
 				$(function () { // wait for document ready
 					// init
 					var controller = new ScrollMagic.Controller({
@@ -186,8 +188,7 @@ h2{
 
 					// get all slides
 					var slides = document.querySelectorAll("section.panel");
-
-					var mapscene = new ScrollMagic.Scene({triggerElement: "#endtitle", duration: 300})
+					var mapscene = new ScrollMagic.Scene({triggerElement: "#endtitle", duration: 0})
 									.setPin("#pin1")
 									.addIndicators({name: "1 (duration: 0)"}) // add indicators (requires plugin)
 									.addTo(controller);
