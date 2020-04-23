@@ -110,7 +110,7 @@ section#titlechart {
 	text-align: center;
 	position: relative;
 	height: 100%;
-	min-height: 500px;
+	min-height: 0px;
 	min-width: 100%;
 	height: 100vh;
 }
@@ -125,17 +125,26 @@ section#titlechart #description {
 	position: absolute;
 	width: 600px;
 	height: 300px;
-	margin: -150px auto auto -300px;
+	margin: -400px auto auto -300px;
 }
 section#titlechart.home #description {
 	padding-top: 0;
-	padding-bottom: 100px;
+	padding-bottom: 0px;
 }
 section#titlechart #description h1 {
 	margin: 0;
+	font-weight: 900;
+  	font-size: 10em;
+  	color: white;
+  	text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;  
 }
 section#titlechart #description h2 {
 	margin-bottom: 20px;
+	margin-top: 450px;
+  	font-weight: 900;
+  	font-size: 2em;
+  	color: white;
+  	text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;  
 }
 section#titlechart #description a.viewsource {
 	margin-bottom: 20px;
@@ -161,32 +170,84 @@ section#titlechart #description ol {
 	content: "↧";
 	font-size: 40px;
 	display: block;
+	color: white;
 }
 #example-wrapper.horizontal section#titlechart #description:after {
 	content: "↦";
+	color: white;
 }
 
-
-section.demo * {
-	font-size: 13px;
-}
-section.demo {
-	font-size: 0;
+section#epigraph {
+	background-color: white;
 	text-align: center;
-}
-section.demo.fullheight {
-	min-height: 100%;
-}
-section.demo.doublewidth, .spacer.doublewidth {
-	min-width: 200%;
-}
-.horizontal section.demo {
-	text-align: inherit;
-	white-space: nowrap;
-	background-image: url("http://scrollmagic.io/assets/img/example_bg_h.png");
-}
-.horizontal section.demo.fullwidth {
+	position: relative;
+	height: 100%;
+	min-height: 500px;
 	min-width: 100%;
+	height: 100vh;
+}
+section#epigraph #description {
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	width: 600px;
+	height: 300px;
+	margin: -150px auto auto -300px;
+}
+section#epigraph #description h2 {
+	margin: 0;
+	font-weight 900;
+	font-size 5em;
+	color: black;
+	text-align: left;
+}
+section#epigraph #description h3 {
+	margin: 0;
+	font-weight 900;
+	font-size 10em;
+	color: black;
+	text-align: right;
+	padding-bottom: 50px;
+}
+
+section#intro {
+	background-color: white;
+	text-align: left;
+	position: relative;
+	min-height: 500px;
+	min-width: 100%;
+	height: 100vh;
+	margin-top: -100vh;
+}
+section#intro #description {
+	top: 0%;
+	left: 50%;
+	position: absolute;
+	width: 600px;
+	margin: -150px auto auto -300px;
+	padding: 20px;
+	border-style: solid;
+	margin-top: 25px;
+}
+section#intro #description h2 {
+	margin: 0;
+	font-weight 900;
+	font-size 5em;
+	color: black;
+	text-align: left;
+	white-space: nowrap;
+}
+section#intro #description h3 {
+	margin: 0;
+	font-weight 900;
+	font-size 10em;
+	color: black;
+	text-align: right;
+	padding-bottom: 50px;
+	white-space: nowrap;
+}
+section#intro #description p {
+	line-height: 200%;
 }
 /*
 	Elements
@@ -973,13 +1034,7 @@ a.viewsource:before {
 .demo#section-wipes #pinContainer .turqoise, .demo#section-wipes #pinContainer .green, .demo#section-slides #slideContainer .panel {
 }
 .demo#section-slides .panel > b, .demo#section-wipes .panel > b {
-	font-size: 15px;
-	color: white;
-	position: relative;
-	display: block;
-	height: 0;
-	overflow: visible;
-	top: 50%;
+
 }
 
 /*
