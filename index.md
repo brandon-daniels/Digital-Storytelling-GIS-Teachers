@@ -16,6 +16,7 @@
     <script src="https://unpkg.com/d3@5.9.1/dist/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="./config.js"></script>
 
 <style>
 
@@ -23,7 +24,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-}
+}			
 #map { position: absolute; top: 0; bottom: 0; width: 100%; }
 
 h1{
@@ -146,25 +147,23 @@ h2{
 									height: 100%;
 									width: 100%;
 								}
+
 							</style>
-				        	<section class="panel white">
-				          		<h1>1</h1>
-				      		</section>
+							<div id="starttheory" class="spacer s0"></div>
+					        	<section id="theory" class="panel white">
+					          		<h1>1</h1>
+					      		</section>
 				        	<div class="spacer s2"></div>
-				        	<div id="endtitle" class="spacer s1"></div>
-				        	<div id="pin1" class="spacer s10">
+				        	<div id="startmap" class="spacer s0"></div>
+				        	<div id="pin1" class="spacer s9">
 				          		<div id="map"></div>
 				        	</div>
-				        	<div class="spacer s2"></div>
-
-				        	<section class="panel blue">
+				        	<div id="outro"> </div>
+				        	<section id="outro" class="panel white">
 				          		<h1>2</h1>
 				        	</section>
-				        	<section class="panel green">
-				          		<h1>3</h2>
-				        	</section>
 <script>
-			        var map = new mapboxgl.Map({
+			    var map = new mapboxgl.Map({
 			          container: 'map', // container id
 			          style: 'mapbox://styles/brandondaniels1917/ck7p8e3x103m81iqhe4xbeosm', // stylesheet location
    					  accessToken: 'pk.eyJ1IjoiYnJhbmRvbmRhbmllbHMxOTE3IiwiYSI6ImNrMm1tYjgwYTBqbDIzZHQ1dmdyNWZxeWcifQ.fdROqOxFdqnMmA6G_f_hgw',
@@ -180,7 +179,7 @@ h2{
 					var controller = new ScrollMagic.Controller({
 						globalSceneOptions: {
 							triggerHook: 'onLeave',
-							duration: "100%" // this works just fine with duration 0 as well
+							duration: "300%" // this works just fine with duration 0 as well
 							// However with large numbers (>20) of pinned sections display errors can occur so every section should be unpinned once it's covered by the next section.
 							// Normally 100% would work for this, but here 200% is used, as Panel 3 is shown for more than 100% of scrollheight due to the pause.
 						}
@@ -188,23 +187,28 @@ h2{
 
 					// get all slides
 					var slides = document.querySelectorAll("section.panel");
-					var mapscene = new ScrollMagic.Scene({triggerElement: "#endtitle", duration: 0})
-									.setPin("#pin1")
+
+					var introtheory = new ScrollMagic.Scene({triggerElement: "#starttheory"})
+										.setPin("#theory")
+										.addIndicators()
+										.addTo(controller);
+
+					var mapscene = new ScrollMagic.Scene({triggerElement: "#startmap"})
+									.setPin("#pin1", {pushFollowers: false})
 									.addIndicators({name: "1 (duration: 0)"}) // add indicators (requires plugin)
-									.addTo(controller);
+									.addTo(controller)
+									.on("progress", function(e){
+										map.setPaintProperty('red-states','fill-extrusion-height', e.progress.toFixed(2)*600000);
+										console.log();
+									});
 
-					// create scene for every slide
-					for (var i=0; i<slides.length; i++) {
-						new ScrollMagic.Scene({
-								triggerElement: slides[i]
-							})
-							.setPin(slides[i], {pushFollowers: false})
-							.addIndicators() // add indicators (requires plugin)
-							.addTo(controller);
-
-
-					}
+					var introtheory = new ScrollMagic.Scene({triggerElement: "#starttheory"})
+										.setPin("#outro")
+										.addIndicators()
+										.addTo(controller);
 				});
+
+
 </script>
 						</div>
 				    </div>
