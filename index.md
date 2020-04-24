@@ -1,4 +1,4 @@
-
+	
 <!DOCTYPE html>
 <html>
   <head>
@@ -30,16 +30,47 @@ body {
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	width: 100%; 
+	width: 100vw; 
+}
+#features {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    z-index: 100;
 }
 #story {
 	position: absolute;
 	z-index: 10;
 }
+#graph {
+	padding-top: 50px;
+	max-height: 100%;
+	max-width: 100%;
+}
+.legend {
+background-color: #fff;
+border-radius: 3px;
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+padding: 10px;
+position: absolute;
+z-index: 100;
+}
+ 
+.legend h4 {
+margin: 0 0 10px;
+}
+ 
+.legend div span {
+border-radius: 50%;
+display: inline-block;
+height: 10px;
+margin-right: 5px;
+width: 10px;
+}
 .mapwrap {
 	z-index: -100;
 }
 .storywrap{
+	position: absolute;
 	z-index: 100;
 }
 .ml4 {
@@ -65,9 +96,9 @@ body {
 .firstcharacter {
   color: black;
   float: left;
-  font-size: 75px;
-  line-height: 60px;
-  padding-top: 4px;
+  font-size: 100px;
+  line-height: 40px;
+  padding-top: 6px;
   padding-right: 8px;
   padding-left: 3px;
 }
@@ -151,7 +182,7 @@ body {
 					      		<div id="startinto" class="spacer s1"></div>
 						    	<section id="intro">
 						    		<section id="description">
-									<span class="firstcharacter">T</span><p>he series of strikes in public education in 2018 represented one of the largest upticks in large-scale work stoppages in over four decades.
+									<span class="firstcharacter">T</span><p>eachers in the United States are agents of history, and so are the bus drivers, cafeteria, staff, and custodial workers that also work as educators. In 2018, more US workers went on strike than in any previous year since 1986. 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis neque congue, elementum magna vitae, porta est. Aliquam finibus, dolor a condimentum condimentum, lorem tortor laoreet quam, vel interdum nulla magna quis enim. Maecenas lacus ligula, efficitur et ipsum et, aliquam mollis diam. Proin tempor at velit ac viverra. Mauris tempus ipsum odio, et euismod erat dictum at. Ut ornare quam sed ex mollis semper. Integer mollis enim eget finibus porta. Donec sed sollicitudin eros, in blandit purus. Maecenas condimentum ullamcorper diam, non efficitur mi porttitor sit amet. Pellentesque vulputate dui in lectus egestas, et tempor ipsum pharetra. Aenean dapibus enim justo, sit amet aliquam arcu accumsan facilisis. Proin interdum mauris in fringilla luctus. In vulputate aliquam diam. Morbi mattis lobortis justo quis laoreet. Nulla rutrum dui quis erat dictum, vel scelerisque diam pretium.
 
 Vestibulum lacus felis, imperdiet vel venenatis ut, laoreet at elit. Proin sed urna rhoncus, cursus odio quis, bibendum nisi. Nullam rutrum at ipsum eget dignissim. Donec lacus nibh, pretium eget porta ac, feugiat et enim. Mauris ac leo ut eros varius porta. Suspendisse mollis lobortis fringilla. Pellentesque dapibus sem et interdum vestibulum. Mauris dictum nunc enim. Nam consequat risus eget arcu aliquet tempus. Praesent nec purus eu elit mattis convallis vel eu lectus. Pellentesque non scelerisque orci. Nunc molestie nulla condimentum aliquam vestibulum. In orci arcu, egestas eu nisi sollicitudin, condimentum feugiat lectus.
@@ -161,26 +192,31 @@ Praesent fringilla pharetra risus sit amet lobortis. Pellentesque fringilla lacu
 Etiam vitae feugiat massa. Fusce condimentum dui eros, in ornare mauris consectetur eget. Suspendisse rhoncus erat a eros eleifend, eget consequat nisi facilisis. Nullam ornare sodales rutrum. Fusce eget vehicula mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tristique justo id neque rutrum interdum.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt congue libero eget lobortis. Nullam posuere lacinia leo a cursus. Cras eget gravida neque, vehicula euismod nisl. Integer maximus leo eget lorem tempor, non elementum lectus semper. Nunc quam justo, volutpat sit amet malesuada vitae, rhoncus et quam. Praesent ultrices sem et pretium ullamcorper. Nulla a finibus dui, id ultrices ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis neque congue, elementum magna vitae, porta est. Aliquam finibus, dolor a condimentum condimentum, lorem tortor laoreet quam, vel interdum nulla magna quis enim. Maecenas lacus ligula, efficitur et ipsum et, aliquam mollis diam. Proin tempor at velit ac viverra. Mauris tempus ipsum odio, et euismod erat dictum at. Ut ornare quam sed ex mollis semper. Integer mollis enim eget finibus porta. Donec sed sollicitudin eros, in blandit purus. Maecenas condimentum ullamcorper diam, non efficitur mi porttitor sit amet. Pellentesque vulputate dui in lectus egestas, et tempor ipsum pharetra. Aenean dapibus enim justo, sit amet aliquam arcu accumsan facilisis. Proin interdum mauris in fringilla luctus. In vulputate aliquam diam. Morbi mattis lobortis justo quis laoreet. Nulla rutrum dui quis erat dictum, vel scelerisque diam pretium.
-
-Vestibulum lacus felis, imperdiet vel venenatis ut, laoreet at elit. Proin sed urna rhoncus, cursus odio quis, bibendum nisi. Nullam rutrum at ipsum eget dignissim. Donec lacus nibh, pretium eget porta ac, feugiat et enim. Mauris ac leo ut eros varius porta. Suspendisse mollis lobortis fringilla. Pellentesque dapibus sem et interdum vestibulum. Mauris dictum nunc enim. Nam consequat risus eget arcu aliquet tempus. Praesent nec purus eu elit mattis convallis vel eu lectus. Pellentesque non scelerisque orci. Nunc molestie nulla condimentum aliquam vestibulum. In orci arcu, egestas eu nisi sollicitudin, condimentum feugiat lectus.
-
-Praesent fringilla pharetra risus sit amet lobortis. Pellentesque fringilla lacus quis lectus cursus, vitae lacinia urna pellentesque. Integer sed dui ac mi suscipit ultricies eget ac ligula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Mauris at ligula turpis. Pellentesque ultricies arcu et turpis consectetur vehicula. Mauris ultrices ligula tortor, eu suscipit mi tempor ac. Morbi hendrerit malesuada odio, sed accumsan lacus auctor non. Phasellus sapien enim, malesuada ut malesuada vitae, ultrices ac sem.
-
-Etiam vitae feugiat massa. Fusce condimentum dui eros, in ornare mauris consectetur eget. Suspendisse rhoncus erat a eros eleifend, eget consequat nisi facilisis. Nullam ornare sodales rutrum. Fusce eget vehicula mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tristique justo id neque rutrum interdum.
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt congue libero eget lobortis. Nullam posuere lacinia leo a cursus. Cras eget gravida neque, vehicula euismod nisl. Integer maximus leo eget lorem tempor, non elementum lectus semper. Nunc quam justo, volutpat sit amet malesuada vitae, rhoncus et quam. Praesent ultrices sem et pretium ullamcorper. Nulla a finibus dui, id ultrices ligula.</p>
-									</section>	    	
+									<img id="graph" src="graph.png">
+</p></section>
+<p>Testing testing <br><br> testing <br>testing</p>
 					      		</section>
-					      	<div class="spacer s7"></div>
+					      	<div class="spacer s10"></div>
 				        	<div id="startmap" class="spacer s0"></div>
+
 				        	<div id="pin1" class="spacer s8">
 				          		<div id="mapwrap" class="wrapper">
 				          			<div id="map"></div>
+				        		</div>
+				        	</div>
+				        	<div id="storywrap" class="wrapper">
+				        		<div id="story"></div>
+				        		<div id="legend" class="legend">
+<h4>Idles (Workers * Days)</h4>
+<div><span style="background-color: #ff0000"></span>500,000</div>
+<div><span style="background-color: #ee7430"></span>250,000</div>
+<div><span style="background-color: #fadc4b"></span>100,000</div>
+<div><span style="background-color: #ffff00"></span>50,000</div>
 				          		</div>
 				        	</div>
-				        		<div id="storywrap" class="wrapper">
-				        			<div id="story"></div>
-				        		</div>
+				        	<div class="spacer s10"></div>
+				        	<div class="spacer s10"></div>
+
 				        	<div id="outro" class="spacer s10"></div>
 				        	<section id="outrocard" class="panel white">
 				          		<h1>2</h1>
@@ -188,66 +224,54 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt congue 
 <script>
 
 
-var story = document.getElementById('story');
-var features = document.createElement('div');
-features.setAttribute('id', 'features');
-
-config.chapters.forEach((record, idx) => {
-	var container = document.createElement('div');
-	var chapter = document.createElement('div');
-	if (record.title) {
-	    var title = document.createElement('h3');
-	    title.innerText = record.title;
-	    chapter.appendChild(title);
-	}
-
-	if (record.image) {
-	    var image = new Image();
-	    image.src = record.image;
-	    chapter.appendChild(image);
-	}
-
-	if (record.description) {
-	    var story = document.createElement('p');
-	    story.innerHTML = record.description;
-	    chapter.appendChild(story);
-	}
-
-	chapter.classList.add(config.theme);
-	container.appendChild(chapter);
-	features.appendChild(container);
-});
-
-story.appendChild(features);
-
 var map = new mapboxgl.Map({
       container: 'map', // container id
       style: 'mapbox://styles/brandondaniels1917/ck7p8e3x103m81iqhe4xbeosm', // stylesheet location
 		  accessToken: 'pk.eyJ1IjoiYnJhbmRvbmRhbmllbHMxOTE3IiwiYSI6ImNrMm1tYjgwYTBqbDIzZHQ1dmdyNWZxeWcifQ.fdROqOxFdqnMmA6G_f_hgw',
-      center: [-96.92126, 36.79253],
-      zoom: 4, // starting zoom
-      pitch: 60.00,
-      bearing: 0.88,
+			            center: [-96.53731, 40.57074],
+			            zoom: 3.92,
+			            pitch: 5.00,
+			            bearing: 0.00
     });
     map.scrollZoom.disable();
 
 $(function () { // wait for document ready
 	// init
+
 	var controller = new ScrollMagic.Controller({
 		globalSceneOptions: {
 			triggerHook: 'onLeave',
-			duration: "100%" // this works just fine with duration 0 as well
-			// However with large numbers (>20) of pinned sections display errors can occur so every section should be unpinned once it's covered by the next section.
-			// Normally 100% would work for this, but here 200% is used, as Panel 3 is shown for more than 100% of scrollheight due to the pause.
 		}
 	});
+	var story = document.getElementById('story');
+	var features = document.createElement('div');
+	features.setAttribute('id', 'features');
+
+	config.chapters.forEach((record, idx) => {
+		var container = document.createElement('div');
+		var chapter = document.createElement('div');
+		if (record.title) {
+		    var title = document.createElement('h3');
+		    title.innerText = record.title;
+		    chapter.appendChild(title);
+		}
+
+		if (record.image) {
+		    var image = new Image();
+		    image.src = record.image;
+		    chapter.appendChild(image);
+		}
+
+		if (record.description) {
+		    var story = document.createElement('p');
+		    story.innerHTML = record.description;
+		    chapter.appendChild(story);
+		}
+	});
+	story.appendChild(features);
 
 
-
-	// get all slides
-	var slides = document.querySelectorAll("section.panel");
-
-	var epigraph = new ScrollMagic.Scene({triggerElement: '#epigraph'})
+	var epigraph = new ScrollMagic.Scene({triggerElement: '#epigraph',duration:"100%"})
 				.setPin("#epigraph")
 				.addIndicators()
 				.addTo(controller);
@@ -257,18 +281,42 @@ $(function () { // wait for document ready
 				.addIndicators()
 				.addTo(controller);
 */
-	var mapscene = new ScrollMagic.Scene({triggerElement: "#startmap", duration: 1000})
-				.setPin("#pin1", {pushFollowers: false})
+	var mapscene = new ScrollMagic.Scene({triggerElement: "#pin1", duration:"1000%"})
+				.setPin("#pin1")
 				.addTo(controller)
 				.addIndicators()
+				.on("start", function(e){
+					if (e.scrollDirection=="FORWARD") {
+					map.flyTo({
+			              center: [-96.92126, 36.79253],
+			              zoom: 4,
+			              pitch: 60.00,
+			              bearing: 0.88,
+			      	      speed: 0.8,
+			      	      curve: 1,
+			      	  	  essential:true});
+					console.log("entering!")};
+				})
+				.on("leave", function(e){
+					console.log("Reset!");
+					map.flyTo({
+						center: [-96.53731, 40.57074],
+			            zoom: 3.92,
+			            pitch: 5.00,
+			            bearing: 0.00,
+			            speed: 0.8,
+			            curve: 1,
+			            essential:true});
+				})
 				.on("progress", function(e){
-					map.setPaintProperty('red-states','fill-extrusion-height', e.progress.toFixed(2)*600000);
-					console.log();
+					map.setPaintProperty('west-virginia','fill-extrusion-height',["min",["to-number",["get","Idles"]],["to-number",["*", ["to-number",["get","Idles"]],["to-number",["*",e.progress,10]]]]]);
+					map.setPaintProperty('kentucky','fill-extrusion-height',["min",["to-number",["get","Idles"]],["to-number",["*", ["to-number",["get","Idles"]],["to-number",["*",e.progress,10]]]]]);
+					map.setPaintProperty('oklahoma','fill-extrusion-height',["min",["to-number",["get","Idles"]],["to-number",["*", ["to-number",["get","Idles"]],["to-number",["*",e.progress,10]]]]]);
+					map.setPaintProperty('north-carolina','fill-extrusion-height',["min",["to-number",["get","Idles"]],["to-number",["*", ["to-number",["get","Idles"]],["to-number",["*",e.progress,10]]]]]);
+					map.setPaintProperty('colorado','fill-extrusion-height',["min",["to-number",["get","Idles"]],["to-number",["*", ["to-number",["get","Idles"]],["to-number",["*",e.progress,10]]]]]);
+					map.setPaintProperty('arizona','fill-extrusion-height',["min",["to-number",["get","Idles"]],["to-number",["*", ["to-number",["get","Idles"]],["to-number",["*",e.progress,10]]]]]);
 				});
 
-	var introtheory = new ScrollMagic.Scene({triggerElement: "#outro"})
-						.setPin("#outrocard")
-						.addTo(controller);
 });
 
 
