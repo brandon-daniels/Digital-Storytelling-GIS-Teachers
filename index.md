@@ -53,8 +53,18 @@ box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 padding: 10px;
 position: absolute;
 z-index: 100;
-}
- 
+left:10%;
+}	
+.legenddescription{
+display: inline;
+background-color: #fff;
+border-radius: 3px;
+box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+padding: 10px;
+position: absolute;
+z-index: 100;
+left:10%;
+} 
 .legend h4 {
 margin: 0 0 10px;
 }
@@ -194,7 +204,6 @@ Etiam vitae feugiat massa. Fusce condimentum dui eros, in ornare mauris consecte
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt congue libero eget lobortis. Nullam posuere lacinia leo a cursus. Cras eget gravida neque, vehicula euismod nisl. Integer maximus leo eget lorem tempor, non elementum lectus semper. Nunc quam justo, volutpat sit amet malesuada vitae, rhoncus et quam. Praesent ultrices sem et pretium ullamcorper. Nulla a finibus dui, id ultrices ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce quis neque congue, elementum magna vitae, porta est. Aliquam finibus, dolor a condimentum condimentum, lorem tortor laoreet quam, vel interdum nulla magna quis enim. Maecenas lacus ligula, efficitur et ipsum et, aliquam mollis diam. Proin tempor at velit ac viverra. Mauris tempus ipsum odio, et euismod erat dictum at. Ut ornare quam sed ex mollis semper. Integer mollis enim eget finibus porta. Donec sed sollicitudin eros, in blandit purus. Maecenas condimentum ullamcorper diam, non efficitur mi porttitor sit amet. Pellentesque vulputate dui in lectus egestas, et tempor ipsum pharetra. Aenean dapibus enim justo, sit amet aliquam arcu accumsan facilisis. Proin interdum mauris in fringilla luctus. In vulputate aliquam diam. Morbi mattis lobortis justo quis laoreet. Nulla rutrum dui quis erat dictum, vel scelerisque diam pretium.
 									<img id="graph" src="graph.png">
 </p></section>
-<p>Testing testing <br><br> testing <br>testing</p>
 					      		</section>
 					      	<div class="spacer s10"></div>
 				        	<div id="startmap" class="spacer s0"></div>
@@ -213,6 +222,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt congue 
 <div><span style="background-color: #fadc4b"></span>100,000</div>
 <div><span style="background-color: #ffff00"></span>50,000</div>
 				          		</div>
+				          		<div id="legenddescription">
+				          			Testing
+				          		</div>
 				        	</div>
 				        	<div class="spacer s10"></div>
 				        	<div class="spacer s10"></div>
@@ -228,7 +240,7 @@ var map = new mapboxgl.Map({
       container: 'map', // container id
       style: 'mapbox://styles/brandondaniels1917/ck7p8e3x103m81iqhe4xbeosm', // stylesheet location
 		  accessToken: 'pk.eyJ1IjoiYnJhbmRvbmRhbmllbHMxOTE3IiwiYSI6ImNrMm1tYjgwYTBqbDIzZHQ1dmdyNWZxeWcifQ.fdROqOxFdqnMmA6G_f_hgw',
-			            center: [-96.53731, 40.57074],
+			            center: [-96.53731, 30.57074],
 			            zoom: 3.92,
 			            pitch: 5.00,
 			            bearing: 0.00
@@ -282,7 +294,7 @@ $(function () { // wait for document ready
 				.addTo(controller);
 */
 	var mapscene = new ScrollMagic.Scene({triggerElement: "#pin1", duration:"1000%"})
-				.setPin("#pin1")
+				.setPin("#pin1",{pushFollowers:false})
 				.addTo(controller)
 				.addIndicators()
 				.on("start", function(e){
@@ -300,7 +312,7 @@ $(function () { // wait for document ready
 				.on("leave", function(e){
 					console.log("Reset!");
 					map.flyTo({
-						center: [-96.53731, 40.57074],
+						center: [-96.53731, 30.57074],
 			            zoom: 3.92,
 			            pitch: 5.00,
 			            bearing: 0.00,

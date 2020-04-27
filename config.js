@@ -14,15 +14,14 @@ var config = {
           title: 'The Red State Revolt',
           description: 'In 2018, six different states experienced state-wide teacher strikes. These strikes ranged in terms of the number of days, the number of teachers, and the outcomes of the strikes. The goal of this digital humanities project is to visualize different characteristics of this teachers revolt. The historical event gained the name The Red State Revolt, since a majority of the states involved in the strikes were controlled by Republican legislatures. Each of the strikes represent a deep dissatisifcation by teachers with the management of public education. This first vizualization shows the (number of teachers) times (the number of strike days). This figure, described as idle days by the Burueau of Labor Statistics, gives the viewer an idea of how massive each of these events were for the state. For each red area, there are at least 20,000 teachers deciding to risk their livlihood. And the taller the red area, the more these teachers decided to risk.',
           location: {
-              center: [-96.92126, 36.79253],
-              zoom: 3,
-              pitch: 60.00,
-              bearing: 0.88
+            center: [-96.53731, 40.57074],
+            zoom: 3.92,
+            pitch: 5.00,
+            bearing: 0.00
           },
           onChapterEnter: [
               {
-                  layer: 'red-states',
-                  opacity: .75
+
               },
           ],
           onChapterExit: [

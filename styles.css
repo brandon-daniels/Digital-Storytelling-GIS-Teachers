@@ -1,5 +1,5 @@
 body {
-	font-family: "Source Sans Pro", Arial, sans-serif;
+	font-family: "Josefin Slab", serif;
 	background-color: white;
 	font-size: 13px;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -247,8 +247,11 @@ section#intro #description h3 {
 	white-space: nowrap;
 }
 section#intro #description p {
+	font-size: 1.3em;
+	margin-top: 35px;
 	line-height: 200%;
 }
+
 /*
 	Elements
 */
