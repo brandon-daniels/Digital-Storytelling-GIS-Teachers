@@ -46,10 +46,25 @@ body {
 	max-height: 100%;
 	max-width: 100%;
 }
+.mapstory{
+	background-color: #fff;
+	left: 50%;
+	position: relative;
+	width: 600px;
+	margin: -150px auto auto -300px;
+	padding: 20px;
+	border-style: solid;
+	margin-top: 25px;
+	z-index: 100;
+}
+.mapstory p{
+	font-size: 1.3em;
+	margin-top: 35px;
+	line-height: 200%;
+}
 .legend {
 background-color: #fff;
-border-radius: 3px;
-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+border-style: solid;
 padding: 10px;
 position: absolute;
 z-index: 100;
@@ -206,6 +221,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt congue 
 </p></section>
 					      		</section>
 					      	<div class="spacer s10"></div>
+					      	<div class="spacer s10"></div>
 				        	<div id="startmap" class="spacer s0"></div>
 
 				        	<div id="pin1" class="spacer s8">
@@ -222,8 +238,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt congue 
 <div><span style="background-color: #fadc4b"></span>100,000</div>
 <div><span style="background-color: #ffff00"></span>50,000</div>
 				          		</div>
-				          		<div id="legenddescription">
-				          			Testing
+				          		<div id="part1" class="mapstory">
+				          			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt congue libero eget lobortis. Nullam posuere lacinia leo a cursus. Cras eget gravida neque, vehicula euismod nisl. Integer maximus leo eget lorem tempor, non elementum lectus semper. Nunc quam justo, volutpat sit amet malesuada vitae, rhoncus et quam. Praesent ultrices sem et pretium ullamcorper. Nulla a finibus dui, id ultrices ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+				          		</div>
+				          		<div class="spacer s_viewport"></div>
+				          		<div class="spacer s10"></div>
+				          		<div id="part2" class="mapstory">
+				          			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt congue libero eget lobortis. Nullam posuere lacinia leo a cursus. Cras eget gravida neque, vehicula euismod nisl. Integer maximus leo eget lorem tempor, non elementum lectus semper. Nunc quam justo, volutpat sit amet malesuada vitae, rhoncus et quam. Praesent ultrices sem et pretium ullamcorper. Nulla a finibus dui, id ultrices ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 				          		</div>
 				        	</div>
 				        	<div class="spacer s10"></div>
@@ -231,7 +252,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt congue 
 
 				        	<div id="outro" class="spacer s10"></div>
 				        	<section id="outrocard" class="panel white">
-				          		<h1>2</h1>
+				          		<h1>Conclusion</h1>
 				        	</section>
 <script>
 
@@ -247,6 +268,17 @@ var map = new mapboxgl.Map({
     });
     map.scrollZoom.disable();
 
+function getLayerPaintType(layer) {
+    var layerType = map.getLayer(layer).type;
+    return layerTypes[layerType];
+}
+
+function setLayerOpacity(layer) {
+    var paintProps = getLayerPaintType(layer.layer);
+    paintProps.forEach(function(prop) {
+        map.setPaintProperty(layer.layer, prop, layer.opacity);
+    });
+}
 $(function () { // wait for document ready
 	// init
 
@@ -292,6 +324,7 @@ $(function () { // wait for document ready
 				.addIndicators()
 				.addTo(controller);
 */
+
 	var mapscene = new ScrollMagic.Scene({triggerElement: "#pin1", duration:"1000%"})
 				.setPin("#pin1",{pushFollowers:false})
 				.addTo(controller)
@@ -319,15 +352,35 @@ $(function () { // wait for document ready
 			            essential:true});
 				})
 				.on("progress", function(e){
-					map.setPaintProperty('west-virginia','fill-extrusion-height',["min",["to-number",["get","Idles"]],["to-number",["*", ["to-number",["get","Idles"]],["to-number",["*",e.progress,10]]]]]);
-					map.setPaintProperty('kentucky','fill-extrusion-height',["min",["to-number",["get","Idles"]],["to-number",["*", ["to-number",["get","Idles"]],["to-number",["*",e.progress,10]]]]]);
-					map.setPaintProperty('oklahoma','fill-extrusion-height',["min",["to-number",["get","Idles"]],["to-number",["*", ["to-number",["get","Idles"]],["to-number",["*",e.progress,10]]]]]);
-					map.setPaintProperty('north-carolina','fill-extrusion-height',["min",["to-number",["get","Idles"]],["to-number",["*", ["to-number",["get","Idles"]],["to-number",["*",e.progress,10]]]]]);
-					map.setPaintProperty('colorado','fill-extrusion-height',["min",["to-number",["get","Idles"]],["to-number",["*", ["to-number",["get","Idles"]],["to-number",["*",e.progress,10]]]]]);
-					map.setPaintProperty('arizona','fill-extrusion-height',["min",["to-number",["get","Idles"]],["to-number",["*", ["to-number",["get","Idles"]],["to-number",["*",e.progress,10]]]]]);
+					map.setPaintProperty('west-virginia','fill-extrusion-height',["min",["to-number",["get","Idles"]],["to-number",["*", ["to-number",["get","Idles"]],["to-number",["*",e.progress,20]]]]]);
+					map.setPaintProperty('kentucky','fill-extrusion-height',["min",["to-number",["get","Idles"]],["to-number",["*", ["to-number",["get","Idles"]],["to-number",["*",e.progress,20]]]]]);
+					map.setPaintProperty('oklahoma','fill-extrusion-height',["min",["to-number",["get","Idles"]],["to-number",["*", ["to-number",["get","Idles"]],["to-number",["*",e.progress,20]]]]]);
+					map.setPaintProperty('north-carolina','fill-extrusion-height',["min",["to-number",["get","Idles"]],["to-number",["*", ["to-number",["get","Idles"]],["to-number",["*",e.progress,20]]]]]);
+					map.setPaintProperty('colorado','fill-extrusion-height',["min",["to-number",["get","Idles"]],["to-number",["*", ["to-number",["get","Idles"]],["to-number",["*",e.progress,20]]]]]);
+					map.setPaintProperty('arizona','fill-extrusion-height',["min",["to-number",["get","Idles"]],["to-number",["*", ["to-number",["get","Idles"]],["to-number",["*",e.progress,20]]]]]);
 				});
 
+	var part2 = new ScrollMagic.Scene({triggerElement: '#part2',duration:"100%"})
+				.on("start", function(e){
+					if (e.scrollDirection=="FORWARD") {
+					map.flyTo({
+			                center: [-80.80653, 38.65278],
+			                zoom: 5.87,
+			                pitch: 45.00,
+			                bearing: 0.00,
+			      	      speed: 0.8,
+			      	      curve: 1,
+			      	  	  essential:true});
+//					map.setPaintProperty('west-virginia',"opacity",0);
+//					map.setPaintProperty('kentucky',"opacity",0);
+//					map.setPaintProperty('oklahoma',"opacity",0);
+//					map.setPaintProperty('north-carolina',"opacity",0);
+//					map.setPaintProperty('colorado',"opacity",0);
+//					map.setPaintProperty('colorado',"opacity",0);	
+				}})
+				.addTo(controller);
 });
+
 
 
 </script>
