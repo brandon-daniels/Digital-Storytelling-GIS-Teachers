@@ -285,7 +285,6 @@ $(function () { // wait for document ready
 
 	var epigraph = new ScrollMagic.Scene({triggerElement: '#epigraph',duration:"100%"})
 				.setPin("#epigraph")
-				.addIndicators()
 				.addTo(controller);
 
 /*	var intro = new ScrollMagic.Scene({triggerElement: "#intro"})
@@ -296,7 +295,6 @@ $(function () { // wait for document ready
 	var mapscene = new ScrollMagic.Scene({triggerElement: "#pin1", duration:"1000%"})
 				.setPin("#pin1",{pushFollowers:false})
 				.addTo(controller)
-				.addIndicators()
 				.on("start", function(e){
 					if (e.scrollDirection=="FORWARD") {
 					map.flyTo({
