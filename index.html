@@ -279,6 +279,10 @@ function setLayerOpacity(layer) {
         map.setPaintProperty(layer.layer, prop, layer.opacity);
     });
 }
+
+function moveMap(position){
+	map.flyTo(position);
+}
 $(function () { // wait for document ready
 	// init
 
@@ -287,33 +291,43 @@ $(function () { // wait for document ready
 			triggerHook: 'onLeave',
 		}
 	});
-	var story = document.getElementById('story');
-	var features = document.createElement('div');
-	features.setAttribute('id', 'features');
 
-	config.chapters.forEach((record, idx) => {
-		var container = document.createElement('div');
-		var chapter = document.createElement('div');
-		if (record.title) {
-		    var title = document.createElement('h3');
-		    title.innerText = record.title;
-		    chapter.appendChild(title);
-		}
-
-		if (record.image) {
-		    var image = new Image();
-		    image.src = record.image;
-		    chapter.appendChild(image);
-		}
-
-		if (record.description) {
-		    var story = document.createElement('p');
-		    story.innerHTML = record.description;
-		    chapter.appendChild(story);
-		}
-	});
-	story.appendChild(features);
-
+	var chapters = [	{
+						center: [-96.53731, 30.57074],
+			            zoom: 3.92,
+			            pitch: 5.00,
+			            bearing: 0.00,
+			            speed: 0.8,
+			            curve: 1,
+			            essential:false
+			        	},
+			            {
+			            center: [-96.92126, 36.79253],
+			            zoom: 4,
+			            pitch: 60.00,
+			            bearing: 0.88,
+			      	    speed: 0.8,
+			      	    curve: 1,
+			      	  	essential:false
+			      	  	},
+			      	  	{
+						center: [-96.53731, 30.57074],
+			            zoom: 3.92,
+			            pitch: 5.00,
+			            bearing: 0.00,
+			            speed: 0.8,
+			            curve: 1,
+			            essential:false
+			        	},
+			        	{
+			            center: [-80.80653, 38.65278],
+			            zoom: 5.87,
+			            pitch: 45.00,
+			            bearing: 0.00,
+			      	    speed: 0.8,
+			      	    curve: 1,
+			      	  	essential:false
+			        	}];
 
 	var epigraph = new ScrollMagic.Scene({triggerElement: '#epigraph',duration:"100%"})
 				.setPin("#epigraph")
@@ -330,26 +344,11 @@ $(function () { // wait for document ready
 				.addTo(controller)
 				.on("start", function(e){
 					if (e.scrollDirection=="FORWARD") {
-					map.flyTo({
-			              center: [-96.92126, 36.79253],
-			              zoom: 4,
-			              pitch: 60.00,
-			              bearing: 0.88,
-			      	      speed: 0.8,
-			      	      curve: 1,
-			      	  	  essential:true});
-					console.log("entering!")};
-				})
+					moveMap(chapters[1]);
+				}})
 				.on("leave", function(e){
 					console.log("Reset!");
-					map.flyTo({
-						center: [-96.53731, 30.57074],
-			            zoom: 3.92,
-			            pitch: 5.00,
-			            bearing: 0.00,
-			            speed: 0.8,
-			            curve: 1,
-			            essential:true});
+					moveMap(chapters[0]);
 				})
 				.on("progress", function(e){
 					map.setPaintProperty('west-virginia','fill-extrusion-height',["min",["to-number",["get","Idles"]],["to-number",["*", ["to-number",["get","Idles"]],["to-number",["*",e.progress,20]]]]]);
@@ -363,20 +362,23 @@ $(function () { // wait for document ready
 	var part2 = new ScrollMagic.Scene({triggerElement: '#part2',duration:"100%"})
 				.on("start", function(e){
 					if (e.scrollDirection=="FORWARD") {
-					map.flyTo({
-			                center: [-80.80653, 38.65278],
-			                zoom: 5.87,
-			                pitch: 45.00,
-			                bearing: 0.00,
-			      	      speed: 0.8,
-			      	      curve: 1,
-			      	  	  essential:true});
-//					map.setPaintProperty('west-virginia',"opacity",0);
-//					map.setPaintProperty('kentucky',"opacity",0);
-//					map.setPaintProperty('oklahoma',"opacity",0);
-//					map.setPaintProperty('north-carolina',"opacity",0);
-//					map.setPaintProperty('colorado',"opacity",0);
-//					map.setPaintProperty('colorado',"opacity",0);	
+					moveMap(chapters[3]);
+//					map.setPaintProperty('west-virginia',"fill-extrusion-opacity",0);
+					map.setPaintProperty('kentucky',"fill-extrusion-opacity",0);
+					map.setPaintProperty('oklahoma',"fill-extrusion-opacity",0);
+					map.setPaintProperty('north-carolina',"fill-extrusion-opacity",0);
+					map.setPaintProperty('colorado',"fill-extrusion-opacity",0);
+					map.setPaintProperty('arizona',"fill-extrusion-opacity",0);
+				}})
+				.on("leave", function(e){
+					if (e.scrollDirection=="REVERSE") {
+					moveMap(chapters[2]);
+					map.setPaintProperty('west-virginia',"fill-extrusion-opacity",1);
+					map.setPaintProperty('kentucky',"fill-extrusion-opacity",1);
+					map.setPaintProperty('oklahoma',"fill-extrusion-opacity",1);
+					map.setPaintProperty('north-carolina',"fill-extrusion-opacity",1);
+					map.setPaintProperty('colorado',"fill-extrusion-opacity",1);
+					map.setPaintProperty('arizona',"fill-extrusion-opacity",1);
 				}})
 				.addTo(controller);
 });
