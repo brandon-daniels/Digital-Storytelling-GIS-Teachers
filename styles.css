@@ -261,7 +261,6 @@ section#intro #description p {
 
 section#outro {
 	background-color: white;
-	text-align: left;
 	position: relative;
 	min-height: 500px;
 	min-width: 100%;
@@ -279,10 +278,13 @@ section#outro #description {
 	border-style: solid;
 	margin-top: 25px;
 }
+section#outro #title {
+	text-align: center;
+}
 section#outro #description h2 {
-	margin: 0;
+	margin: 0 auto;
 	font-weight 900;
-	font-size 10em;
+	font-size: 10em;
 	color: black;
 	text-align: left;
 	white-space: nowrap;
