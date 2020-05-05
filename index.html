@@ -487,7 +487,7 @@ $(function () { // wait for document ready
 	var mapscene = new ScrollMagic.Scene({triggerElement: "#startmap", duration:"800%"})
 				.setPin("#pin1",{pushFollowers:false})
 				.addTo(controller)
-				.addIndicators()
+				//.addIndicators()
 				.on("start", function(e){
 					if (e.scrollDirection=="FORWARD") {
 					moveMap(chapters[1]);
@@ -507,7 +507,7 @@ $(function () { // wait for document ready
 				}});
 
 	var part2 = new ScrollMagic.Scene({triggerElement: '#part2',duration:"100%"})
-				.addIndicators()
+				//.addIndicators()
 				.on("start", function(e){
 					if (e.scrollDirection=="FORWARD") {
 					moveMap(chapters[3]);
@@ -533,7 +533,7 @@ $(function () { // wait for document ready
 				.addTo(controller);
 
 	var part3 = new ScrollMagic.Scene({triggerElement: '#part3',duration:"100%"})
-				.addIndicators()
+				//.addIndicators()
 				.on("start", function(e){
 					if (e.scrollDirection=="FORWARD") {
 					moveMap(chapters[3]);
@@ -548,7 +548,7 @@ $(function () { // wait for document ready
 				.addTo(controller);
 
 	var part4 = new ScrollMagic.Scene({triggerElement: '#part4',duration:"100%"})
-			.addIndicators()
+			//.addIndicators()
 			.on("start", function(e){
 				if (e.scrollDirection=="FORWARD") {
 				moveMap(chapters[4]);
@@ -575,7 +575,7 @@ $(function () { // wait for document ready
 			.addTo(controller);
 
 	var part5 = new ScrollMagic.Scene({triggerElement: '#part5',duration:"100%"})
-			.addIndicators()
+			//.addIndicators()
 			.on("start", function(e){
 				if (e.scrollDirection=="FORWARD") {
 				moveMap(chapters[5]);
