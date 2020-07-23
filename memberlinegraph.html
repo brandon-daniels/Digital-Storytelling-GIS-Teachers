@@ -54,7 +54,6 @@
   </head>
   <body>
 <svg id="linegraph" width="700" height="300"></svg>
-<svg id="barchart" width="1000" height="500"></svg>
     <script type="text/javascript">
 
 
@@ -200,24 +199,24 @@ d3.csv("https://raw.githubusercontent.com/brandon-daniels/DH-Strike-Project/mast
             .attr("class", "tooltip")
             .attr("width", 100)
             .attr("height", 50)
-            .attr("x", 10)
+            .attr("x", -120)
             .attr("y", -22)
             .attr("rx", 4)
             .attr("ry", 4);
 
         focus.append("text")
             .attr("class", "tooltip-date")
-            .attr("x", 18)
+            .attr("x", -110)
             .attr("y", -2);
 
         focus.append("text")
-            .attr("x", 18)
+            .attr("x", -110)
             .attr("y", 18)
             .text("Members:");
 
         focus.append("text")
             .attr("class", "tooltip-likes")
-            .attr("x", 80)
+            .attr("x", -50)
             .attr("y", 18);
         svg.append("rect")
             .attr("class", "overlay")
