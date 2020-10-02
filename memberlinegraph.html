@@ -80,7 +80,7 @@ var dateFormatter = d3.timeFormat("%b %e");
 
 
 
-d3.csv("https://raw.githubusercontent.com/brandon-daniels/DH-Strike-Project/master/members1.csv", 
+d3.csv("https://raw.githubusercontent.com/brandon-daniels/DH-Strike-Project/master/members2.csv", 
 	function(d,i){
 			return {date : parseDate(d.member), total : i}
 		},
